@@ -14,13 +14,14 @@ public class playerController : MonoBehaviour
     public GameObject Gate;
     private Rigidbody rb;
     public int Score;
+    public AudioSource CoinFX;
 
     void SetScoreText()
     {
         ScoreText.text = "Score: " + Score.ToString();
         if (Score >= 9)
         {
-            WinText.text = "You won! Press R to restart or ESC to quit";
+            WinText.text = "nice one, [R]estart or [E]scape";
         }
     }
 
@@ -67,6 +68,7 @@ public class playerController : MonoBehaviour
                 Gate.gameObject.SetActive(false);
             }
             SetScoreText();
+            CoinFX.Play();
         }
 
         if (other.gameObject.CompareTag("danger"))
